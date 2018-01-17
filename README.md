@@ -119,5 +119,5 @@ http://localhost:3000/dist/
 ```
 
 ## 开发教程
-[1.开发环境搭建](https://github.com/195440/vue2-demo/docs/1.md)  
-[2.实现登录退出](https://github.com/195440/vue2-demo/docs/2.md)
+[1.开发环境搭建](https://github.com/195440/vue2-demo/blob/master/docs/1.md)  
+[2.实现登录退出](https://github.com/195440/vue2-demo/blob/master/docs/2.md)
