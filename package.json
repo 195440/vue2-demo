@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server",
-    "dev:dist": "cross-env NODE_ENV=production gulp devDist",
-    "dev:test": "gulp devTest"
+    "build": "cross-env NODE_ENV=production gulp devDist",
+    "dist": "cross-env NODE_ENV=production gulp dist",
+    "test": "gulp devTest"
   },
   "author": "",
   "license": "ISC",

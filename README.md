@@ -107,11 +107,17 @@ vuex                                  // 组件状态管理
 
 ### 运行程序 
 ```
+# 安装依赖
 npm install
+# 本地调试
 npm run dev
-http://localhost:3000/app/
+# 发布到测试服务器
+npm run test
+# 发布到生成环境
+npm run dev
+http://localhost:3000/dist/
 ```
 
 ## 开发教程
-[1.开发环境搭建](https://github.com/lzxb/vue2-demo/blob/master/docs/1.md)  
-[2.实现登录退出](https://github.com/lzxb/vue2-demo/blob/master/docs/2.md)
+[1.开发环境搭建](https://github.com/195440/vue2-demo/docs/1.md)  
+[2.实现登录退出](https://github.com/195440/vue2-demo/docs/2.md)

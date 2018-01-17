@@ -10,6 +10,7 @@ import './less/common.less'
 
 Object.keys(components).forEach((key) => {
     var name = key.replace(/(\w)/, (v) => v.toUpperCase()) //首字母大写
+    debugger;
     Vue.component(`v${name}`, components[key])
 })
 
@@ -19,6 +20,7 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach(({meta, path}, from, next) => {
+    debugger;
     var { auth = true } = meta
     var isLogin = Boolean(store.state.user.id) //true用户已登录， false用户未登录
 
