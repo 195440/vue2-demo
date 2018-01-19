@@ -27,8 +27,8 @@ export default [
             },
             {
                 path: '*', //其他页面，强制跳转到登录页面
-                redirect: '/login'
-            }
+                component: resolve => require(['../pages/index/'], resolve)
+            }   
         ]
     }
 ]

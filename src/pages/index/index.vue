@@ -1,38 +1,39 @@
 <style lang="less" scoped>
-	.login-msg {
-		padding: 50px;
-		text-align: center;
-	}
-	.msg {
-		padding: 50px;
-		text-align: center;
-		font-size: 20px;
-		color: red;
-	}
+.layout-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .layout-main {
+    flex: 1;
+  }
+}
 </style>
 <template>
-	<div>
-		<v-header title="首页">
-			<router-link slot="right" v-if="user.id" to="/home">{{user.name}}</router-link>
-		</v-header>
-		<div class="login-msg" v-if="!user.id">
-			<router-link to="/login">你还未登录，请先登录</router-link>
+	<div class="layout-body">
+		<v-header title="首页"></v-header>
+		<div class="layout-main">
+			<div class="layout-main-left">
+				<v-left></v-left>
+			</div>
+			<div class="layout-main-right">
+				<v-right></v-right>
+			</div>
 		</div>
-		<div class="msg" v-if="user.id">
-			<img width="50" :src="logo" alt=""> <br>
-			哈哈，恭喜你已经入坑Vue2
-		</div>
+		
+		<v-footer></v-footer>
+		
 	</div>
 </template>
 <script>
-    import { mapState } from 'vuex'
-	import logo from './logo.png'
-    export default {
-		data() {
-			return {
-				logo
-			}
-		},
-        computed: mapState({ user: state => state.user }),
-    }
+import { mapState } from "vuex";
+import logo from "./logo.png";
+export default {
+  data() {
+    return {
+      logo
+    };
+  },
+  computed: mapState({ user: state => state.user })
+};
 </script>

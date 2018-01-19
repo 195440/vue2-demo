@@ -32,6 +32,7 @@
 			</div>
 			<button>登录</button>
 		</form>
+
 	</div>
 </template>
 <script>
