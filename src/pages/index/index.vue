@@ -6,6 +6,7 @@
   flex-direction: column;
   .layout-main {
     flex: 1;
+    display: inline-flex;
   }
 }
 </style>
@@ -13,16 +14,10 @@
 	<div class="layout-body">
 		<v-header title="首页"></v-header>
 		<div class="layout-main">
-			<div class="layout-main-left">
-				<v-left></v-left>
-			</div>
-			<div class="layout-main-right">
-				<v-right></v-right>
-			</div>
+			<v-left></v-left>
+			<v-right></v-right>
 		</div>
-		
 		<v-footer></v-footer>
-		
 	</div>
 </template>
 <script>
