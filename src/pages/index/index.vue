@@ -21,8 +21,8 @@
 	</div>
 </template>
 <script>
-import { mapState } from "vuex";
-import logo from "./logo.png";
+import { mapState } from 'vuex';
+import logo from './logo.png';
 export default {
   data() {
     return {

@@ -18,12 +18,12 @@ export default {
   props: {
     title: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   methods: {
     routeComplete() {
-        console.log(this.$route.path);
+      console.log(this.$route.path);
     }
   },
   mounted() {
@@ -31,7 +31,7 @@ export default {
     this.routeComplete();
   },
   watch: {
-    $route: "routeComplete"
+    $route: 'routeComplete'
   }
 };
 </script>
