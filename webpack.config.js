@@ -26,6 +26,11 @@ plugins.push(
   })
 )
 
+plugins.push(
+  new webpack.ProvidePlugin({　 // 加载插件配置
+    _: 'lodash'
+  }),
+)
 
 module.exports = {
   entry: ['./src/main.js'], //编译入口文件
@@ -38,7 +43,7 @@ module.exports = {
   module: {
     loaders: [{
         test: /\.js(x)*$/,
-        exclude: /^node_modules$/,
+       // exclude: /^node_modules$/,
         loader: 'babel'
       },
       {
