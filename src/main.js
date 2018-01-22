@@ -5,7 +5,10 @@ import routes from './config/routes'
 import store from './store/'
 import components from './components/' //加载公共组件
 
-import $ from './js/jquery-vendor.js';
+import $ from './js/jquery-vendor.js' //jQuery引入转换
+
+import 'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap/dist/css/bootstrap.css'
 
 import './css/common.css'
 import './less/common.less'

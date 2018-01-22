@@ -28,7 +28,10 @@ plugins.push(
 
 plugins.push(
   new webpack.ProvidePlugin({　 // 加载插件配置
-    _: 'lodash'
+    _: 'lodash',
+    jQuery: 'jquery',
+    $: 'jquery',
+    Popper: ['popper.js', 'default'],
   }),
 )
 
@@ -43,7 +46,7 @@ module.exports = {
   module: {
     loaders: [{
         test: /\.js(x)*$/,
-       // exclude: /^node_modules$/,
+        // exclude: /^node_modules$/,
         loader: 'babel'
       },
       {
