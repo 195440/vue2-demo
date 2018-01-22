@@ -5,7 +5,6 @@
   color: #fff;
   padding: 0 15px;
   width: 320px;
-  height: 100%;
   background: #27313c;
 }
 </style>

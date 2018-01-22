@@ -31,4 +31,4 @@ router.beforeEach(({meta, path}, from, next) => {
     
 })
 
-new Vue({ store, router }).$mount('#app')
+new Vue({ store, router }).$mount('#t3cloud')

@@ -5,7 +5,6 @@
   color: #fff;
   padding: 0 15px;
   flex: 1;
-  height: 100%;
 }
 </style>
 <template>

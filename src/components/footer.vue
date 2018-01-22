@@ -1,10 +1,10 @@
 <style lang="less" scoped>
-	.v-footer {
-		position: relative;
-		line-height: 50px;
-        background: #778A9D;
-        padding: 0 15px;
-	}
+.v-footer {
+  position: relative;
+  line-height: 50px;
+  background: #778a9d;
+  padding: 0 15px;
+}
 </style>
 <template>
 	<footer class="v-footer">
@@ -14,12 +14,24 @@
     </footer>
 </template>
 <script>
-    export default {
-        props: {
-            title: {
-                type: String,
-                default: ''
-            }
-        }
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ""
     }
+  },
+  methods: {
+    routeComplete() {
+        console.log(this.$route.path);
+    }
+  },
+  mounted() {
+    // 组件创建完后
+    this.routeComplete();
+  },
+  watch: {
+    $route: "routeComplete"
+  }
+};
 </script>
