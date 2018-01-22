@@ -1,14 +1,14 @@
 module.exports = {
   devTest: { //部署到测试服务器上
-    remotePath: '/home/wwwroot/auto/', //部署到服务器的路径
-    host: '172.18.5.62', //ip地址
+    remotePath: '/opt/nginx/html/tcloud/vuetcloud/', //部署到服务器的路径
+    host: '172.18.1.8', //ip地址
     user: 'root', //帐号
     pass: 'tcloud', //密码
     port: 22 //端口
   },
   devDist: { //部署正式服务器上
-    remotePath: '/home/wwwroot/auto/', //部署到服务器的路径
-    host: '172.18.5.62', //ip地址
+    remotePath: '/opt/nginx/html/tcloud/vuetcloud/', //部署到服务器的路径
+    host: '172.18.1.8', //ip地址
     user: 'root', //帐号
     pass: 'tcloud', //密码
     port: 22 //端口

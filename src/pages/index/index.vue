@@ -17,18 +17,29 @@
 			<v-left></v-left>
 			<v-right></v-right>
 		</div>
-		<v-footer></v-footer>
+		<v-footer :routelink="route1"></v-footer>
 	</div>
 </template>
 <script>
-import { mapState } from 'vuex';
-import logo from './logo.png';
 export default {
   data() {
     return {
-      logo
+      route1: '/'
     };
   },
-  computed: mapState({ user: state => state.user })
+  methods: {
+    routeComplete() {
+      this.route1 = this.$route.path;
+      console.log(this.$route.path);
+      debugger;
+    }
+  },
+  mounted() {
+    // 组件创建完后
+    this.routeComplete();
+  },
+  watch: {
+    $route: 'routeComplete'
+  }
 };
 </script>

@@ -15,7 +15,7 @@ if (IS_ENV) { //生产环境
   plugins.push(new webpack.optimize.UglifyJsPlugin({ //压缩代码
     compress: {
       warnings: false
-    }
+    },
   }))
 }
 
@@ -89,5 +89,6 @@ module.exports = {
         browsers: ['last 100 versions']
       })
     ]
-  }
+  },
+  devtool: 'source-map' // 开启代码地图
 }

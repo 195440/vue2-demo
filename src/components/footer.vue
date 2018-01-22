@@ -4,34 +4,36 @@
   line-height: 50px;
   background: #778a9d;
   padding: 0 15px;
+  img {
+    width: 40px;
+    width: 40px;
+    margin: 0 10px;
+  }
 }
 </style>
 <template>
 	<footer class="v-footer">
-        <router-link slot="left" to="/WF">WF</router-link>
-        <router-link slot="left" to="/CCL">CCL</router-link>
-        <router-link slot="left" to="/login">login</router-link>
-    </footer>
+     <router-link v-for="(d, i) in routelinks" :key="i" slot="left" :to="d">
+       <img :src="'http://t3cloud.jp/img/'+d+'.png'" :alt="d" />
+     </router-link>
+  </footer>
 </template>
 <script>
 export default {
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  },
-  methods: {
-    routeComplete() {
-      console.log(this.$route.path);
-    }
-  },
-  mounted() {
-    // 组件创建完后
-    this.routeComplete();
+  props: ['routelink'],
+  data() {
+    return {
+      routelinks: ['/']
+    };
   },
   watch: {
-    $route: 'routeComplete'
+    routelink: {
+      handler: function(val, oldVal) {
+        debugger;
+        console.log(this.routelinks);
+        this.routelinks.push(val);
+      }
+    }
   }
 };
 </script>

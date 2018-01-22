@@ -1,39 +1,52 @@
 <style lang="less" scoped>
 .login {
-  padding: 50px;
+  width: 320px;
+  height: 440px;
+  top: 50%;
+  left: 50%;
+  margin: -220px 0 0 -160px;
+  background: #ffffff;
+  position: absolute;
   text-align: center;
-  .line {
-    padding: 5px;
-    input {
-      padding: 0 10px;
-      line-height: 28px;
-    }
-  }
-  button {
-    padding: 0 20px;
+  padding: 30px 40px;
+  box-shadow: 0 2px 5px -1px #000;
+  border-radius: 4px;
+  img {
     margin-top: 20px;
-    line-height: 28px;
+    margin-bottom: 40px;
+  }
+
+  .form-control {
+
+    background-color: #eee;
+  }
+
+  button {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 30px;
   }
 }
 </style>
 <template>
 	<div>
 		<form class="login" v-on:submit.prevent="submit">
-			<div class="line">	
-				<div v-show="btn && !form.id">id不能为空</div>
-				<input type="number" placeholder="输入你的id" v-model="form.id">
+			<img src="login.png" />
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="社員/AS番号" v-model="form.id" >
 			</div>
-			<div class="line">
-				<div v-show="btn && !form.name">用户名不能为空</div>
-				<input type="text" placeholder="输入你的用户名" v-model="form.name">
+			<div class="input-group mb-3">
+				<input type="password" class="form-control" placeholder="パスワード" v-model="form.name" >
 			</div>
-			<button>登录</button>
+			<button class="btn btn-secondary" >ログイン</button>
 		</form>
 	</div>
 </template>
 <script>
 import { mapActions } from 'vuex';
-import { USER_SIGNIN } from 'store/user';
+import { USER_SIGNIN } from 'store/store';
+
+import './login.png';
 
 export default {
   data() {
@@ -48,6 +61,7 @@ export default {
   methods: {
     ...mapActions([USER_SIGNIN]),
     submit() {
+			debugger;
       this.btn = true;
       if (!this.form.id || !this.form.name) return;
       this.USER_SIGNIN(this.form);
