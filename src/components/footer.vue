@@ -13,27 +13,19 @@
 </style>
 <template>
 	<footer class="v-footer">
-     <router-link v-for="(d, i) in routelinks" :key="i" slot="left" :to="d">
+    <span>77</span>
+    <span>{{store1}}</span>
+   <!--  <router-link v-for="(d, i) in store.rountlink" :key="i" slot="left" :to="d">
        <img :src="'http://t3cloud.jp/img/'+d+'.png'" :alt="d" />
-     </router-link>
+     </router-link>-->
   </footer>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
-  props: ['routelink'],
-  data() {
-    return {
-      routelinks: ['/']
-    };
-  },
-  watch: {
-    routelink: {
-      handler: function(val, oldVal) {
-        debugger;
-        console.log(this.routelinks);
-        this.routelinks.push(val);
-      }
-    }
-  }
+  computed: mapState({ store1: function(a){
+    debugger;
+    return a.store.routepath;
+  } }),
 };
 </script>

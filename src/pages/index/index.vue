@@ -17,21 +17,19 @@
 			<v-left></v-left>
 			<v-right></v-right>
 		</div>
-		<v-footer :routelink="route1"></v-footer>
+		<v-footer></v-footer>
 	</div>
 </template>
 <script>
+import { mapActions } from 'vuex';
+import { ROUTE_PATH } from 'store/store';
+
 export default {
-  data() {
-    return {
-      route1: '/'
-    };
-  },
   methods: {
+    ...mapActions([ROUTE_PATH]),
     routeComplete() {
-      this.route1 = this.$route.path;
-      console.log(this.$route.path);
       debugger;
+      this.ROUTE_PATH({routepath:this.$route.path});
     }
   },
   mounted() {
