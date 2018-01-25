@@ -14,7 +14,8 @@
 <template>
 	<footer class="v-footer">
     <span>77</span>
-    <span>{{store1}}</span>
+    <span>{{routepath}}</span>
+    <span>{{routepath1}}</span>
    <!--  <router-link v-for="(d, i) in store.rountlink" :key="i" slot="left" :to="d">
        <img :src="'http://t3cloud.jp/img/'+d+'.png'" :alt="d" />
      </router-link>-->
@@ -23,9 +24,8 @@
 <script>
 import { mapState } from 'vuex';
 export default {
-  computed: mapState({ store1: function(a){
-    debugger;
-    return a.store.routepath;
-  } }),
+  computed: mapState({
+    routepath: state => state.store.routepath
+  })
 };
 </script>

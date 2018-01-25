@@ -1,27 +1,27 @@
 import Vue from 'vue'
 
-export const SET_STORE = 'SET_STORE' //存入数据
-export const DEL_STORE = 'DEL_STORE' //删除数据
+export const SET_USER = 'SET_USER' //存入数据
+export const DEL_USER = 'DEL_USER' //删除数据
 
 export default {
   state: { id: '', name: '', routepath: '/' },
   mutations: {
-    [SET_STORE](state, store) {
+    [SET_USER](state, store) {
       console.log('原数据: ' + JSON.stringify(state))
       console.log('合并数据: ' + JSON.stringify(store))
       Object.assign(state, store)
     },
-    [DEL_STORE](state) {
+    [DEL_USER](state) {
       console.log('删除数据: ' + JSON.stringify(state))
       Object.keys(state).forEach(k => Vue.delete(state, k))
     },
   },
   actions: {
-    [SET_STORE]({ commit }, store) {
-      commit(SET_STORE, store)
+    [SET_USER]({ commit }, store) {
+      commit(SET_USER, store)
     },
-    [DEL_STORE]({ commit }) {
-      commit(DEL_STORE)
+    [DEL_USER]({ commit }) {
+      commit(DEL_USER)
     },
   }
 }

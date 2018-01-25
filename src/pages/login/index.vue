@@ -17,7 +17,6 @@
   }
 
   .form-control {
-
     background-color: #eee;
   }
 
@@ -44,7 +43,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
-import { USER_SIGNIN } from 'store/store';
+import { SET_STORE } from 'store/store';
 
 import './login.png';
 
@@ -59,13 +58,24 @@ export default {
     };
   },
   methods: {
-    ...mapActions([USER_SIGNIN]),
+    ...mapActions([SET_STORE]),
     submit() {
-			debugger;
+      let _this = this;
+      $.post(restpath + '/login', {
+        id: this.form.id
+      }).done(function(data) {
+        if (data.success) {
+          _this.SET_STORE(_this.form);
+          _this.$router.replace({ path: '/' });
+        }
+      });
+      debugger;
+      /*
       this.btn = true;
-      if (!this.form.id || !this.form.name) return;
+      if (!this.form.id) return;
       this.USER_SIGNIN(this.form);
       this.$router.replace({ path: '/' });
+      */
     }
   }
 };

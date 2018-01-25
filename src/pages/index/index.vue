@@ -22,14 +22,17 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
-import { ROUTE_PATH } from 'store/store';
+import { SET_STORE } from 'store/store';
+import { SET_USER } from 'store/user';
 
 export default {
   methods: {
-    ...mapActions([ROUTE_PATH]),
+    ...mapActions([SET_STORE]),
+    ...mapActions([SET_USER]),
     routeComplete() {
       debugger;
-      this.ROUTE_PATH({routepath:this.$route.path});
+      this.SET_STORE({ routepath: this.$route.path });
+      this.SET_USER({ routepath: this.$route.path });
     }
   },
   mounted() {

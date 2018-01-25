@@ -28,28 +28,14 @@
 		<span>Vue tCloud</span>
     <span>
       <div class="t-user">
-        <div class="t-user-photo" :style="'background-image:url(http://t3cloud.jp/userPhoto/'+uerData.employeecode+'.jpg)'"></div>
+        <div class="t-user-photo" :style="'background-image:url(http://t3cloud.jp/userPhoto/'+user+'.jpg)'"></div>
       </div>
     </span>
 	</header>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
-  data() {
-    return {
-      uerData: { employeecode: '' }
-    };
-  },
-  methods: {
-    uerGet() {
-      $.get('/tcloud/mainplat/users/usernow').done(
-        data => (this.uerData = data)
-      );
-    }
-  },
-  mounted() {
-    // 组件创建完后
-    this.uerGet();
-  }
+  computed: mapState({ user: state => state.store.id })
 };
 </script>

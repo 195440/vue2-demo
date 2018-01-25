@@ -11,10 +11,6 @@ export default [{
       component: resolve => require(['../pages/login/'], resolve)
     },
     {
-      path: '/signout', //退出
-      component: resolve => require(['../pages/signout/'], resolve)
-    },
-    {
       path: '/home', //个人主页
       component: resolve => require(['../pages/home/'], resolve)
     },

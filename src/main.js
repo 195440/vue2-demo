@@ -13,6 +13,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './css/common.css'
 import './less/common.less'
 
+//全局变量
+global.restpath = 'http://172.18.5.62:5002/mock/25';
+
 Object.keys(components).forEach((key) => {
   var name = key.replace(/(\w)/, (v) => v.toUpperCase()) //首字母大写
   Vue.component(`v${name}`, components[key])
@@ -24,11 +27,9 @@ const router = new VueRouter({
   routes
 })
 router.beforeEach(({ meta, path }, from, next) => {
-    debugger;
-  var { auth = true } = meta
-  var isLogin = Boolean(store.state.store.id) //true用户已登录， false用户未登录
 
-  if (auth && !isLogin && path !== '/login') {
+  var isLogin = Boolean(store.state.store.id) //true用户已登录， false用户未登录
+  if (!isLogin && path !== '/login') {
     return next({ path: '/login' })
   }
   next()
