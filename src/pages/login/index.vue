@@ -42,15 +42,14 @@
 	</div>
 </template>
 <script>
-import { mapActions } from 'vuex';
-import { SET_STORE } from 'store/store';
+import { mapActions, mapState } from 'vuex';
+import { SET_STORE } from 'store/info';
 
 import './login.png';
 
 export default {
   data() {
     return {
-      btn: false, //true 已经提交过， false没有提交过
       form: {
         id: '',
         name: ''
@@ -61,22 +60,23 @@ export default {
     ...mapActions([SET_STORE]),
     submit() {
       let _this = this;
+      if (!this.form.id) {
+        return;
+      }
       $.post(restpath + '/login', {
         id: this.form.id
       }).done(function(data) {
         if (data.success) {
           _this.SET_STORE(_this.form);
-          _this.$router.replace({ path: '/' });
+          _this.$router.replace({
+            path: _this.oldRoutePath === 'login' ? '/' : _this.oldRoutePath
+          });
         }
       });
-      debugger;
-      /*
-      this.btn = true;
-      if (!this.form.id) return;
-      this.USER_SIGNIN(this.form);
-      this.$router.replace({ path: '/' });
-      */
     }
-  }
+  },
+  computed: mapState({
+    oldRoutePath: state => state.info.oldRoutePath
+  })
 };
 </script>

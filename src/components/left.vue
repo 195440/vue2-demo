@@ -55,7 +55,7 @@
 		<ul>
       <li v-for="(list, key, index) in noticeDatas" :key="key">
         <div class="v-notice-link">{{ key.trim() }}</div>
-         <a :title="list1.notice" v-for="(list1, key1) in list" :key="key1">
+         <a @click="noticeOpen(list1)" :title="list1.notice" v-for="(list1, key1) in list" :key="key1">
             <span class="v-notice-title"><span class="v-notice-date"><span class="v-notice-circle"></span>21日 00時</span>{{ list1.notice }}</span>
          </a>
       </li>
@@ -71,9 +71,10 @@ export default {
   },
   methods: {
     noticeList() {
-      $.get(
-        '/tcloud/mainplat/users/usernow/notices?_dc=1516584064190&page=1&start=0&limit=25&filter=%5B%7B%22property%22%3A%22display%22%2C%22value%22%3A%22%5C%5Cbtrue%5C%5Cb%22%7D%5D'
-      ).done(data => (this.noticeDatas = _.groupBy(data, 'appNM')));
+      $.get(restpath + '/notice').done(data => (this.noticeDatas = _.groupBy(data, 'appNM')));
+    },
+    noticeOpen(list1){
+      alert(list1);
     }
   },
   mounted() {

@@ -1,7 +1,6 @@
 <style lang="less" scoped>
 .v-footer {
   position: relative;
-  line-height: 50px;
   background: #778a9d;
   padding: 0 15px;
   img {
@@ -9,23 +8,97 @@
     width: 40px;
     margin: 0 10px;
   }
+  ul {
+    padding: 0;
+    li {
+      float: left;
+      list-style-type: none;
+      a {
+        width: 50px;
+        height: 50px;
+        display: block;
+        text-align: center;
+        padding: 5px 0;
+        margin-right: 10px;
+        cursor: pointer;
+        img {
+          width: 40px;
+          height: 40px;
+        }
+        span {
+          font-size: 0.9rem;
+          display: block;
+          white-space: pre;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+    .active {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
 }
 </style>
 <template>
 	<footer class="v-footer">
-    <span>77</span>
-    <span>{{routepath}}</span>
-    <span>{{routepath1}}</span>
-   <!--  <router-link v-for="(d, i) in store.rountlink" :key="i" slot="left" :to="d">
-       <img :src="'http://t3cloud.jp/img/'+d+'.png'" :alt="d" />
-     </router-link>-->
+    <ul>
+      <li v-for="(list, index) in links" :key="index" :class="{active:list._active}">
+         <a @click="linkTab(list)">
+           <img :src="'http://t3cloud.jp/'+list.icourl" />
+         </a>
+      </li>
+    </ul>
   </footer>
 </template>
 <script>
 import { mapState } from 'vuex';
 export default {
+  data() {
+    return {
+      links: []
+    };
+  },
+  methods: {
+    appLink: function() {
+      let _this = this;
+      let _links = [];
+      _this.routePath.forEach(function(d) {
+        let r = _.find(_this.userApps, function(o) {
+          return o.appkey === d.replace('/', '');
+        });
+        if (r) {
+          if (_this.$route.path.replace('/', '') === r.appkey) {
+            r._active = true;
+          } else {
+            r._active = false;
+          }
+          _links.push(r);
+        }
+      });
+      _this.links = _links;
+    },
+    linkTab: function(list) {
+      // 使用路由打开内部页
+      this.$router.replace({ path: '' + list.appkey });
+    }
+  },
   computed: mapState({
-    routepath: state => state.store.routepath
-  })
+    userApps: state => state.info.userApps,
+    routePath: state => state.info.routePath
+  }),
+  watch: {
+    routePath: function() {
+      this.appLink();
+    },
+    userApps: function() {
+      this.appLink();
+    },
+    $route: 'appLink'
+  },
+  mounted() {
+    // 组件创建完后
+    this.appLink();
+  }
 };
 </script>

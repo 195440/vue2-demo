@@ -21,24 +21,27 @@
 	</div>
 </template>
 <script>
-import { mapActions } from 'vuex';
-import { SET_STORE } from 'store/store';
-import { SET_USER } from 'store/user';
+import { mapActions, mapState } from 'vuex';
+import { SET_STORE } from 'store/info';
 
 export default {
   methods: {
     ...mapActions([SET_STORE]),
-    ...mapActions([SET_USER]),
     routeComplete() {
-      debugger;
-      this.SET_STORE({ routepath: this.$route.path });
-      this.SET_USER({ routepath: this.$route.path });
+      if (this.routePath.indexOf(this.$route.path) === -1) {
+        let newRoutePath = this.routePath;
+        newRoutePath.push(this.$route.path)
+        this.SET_STORE({ routePath: newRoutePath })
+      }
     }
   },
   mounted() {
     // 组件创建完后
     this.routeComplete();
   },
+  computed: mapState({
+    routePath: state => state.info.routePath
+  }),
   watch: {
     $route: 'routeComplete'
   }

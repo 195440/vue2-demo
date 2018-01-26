@@ -36,6 +36,6 @@
 <script>
 import { mapState } from 'vuex';
 export default {
-  computed: mapState({ user: state => state.store.id })
+  computed: mapState({ user: state => state.info.id })
 };
 </script>

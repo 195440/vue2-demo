@@ -50,6 +50,9 @@
 	</div>
 </template>
 <script>
+import { mapActions, mapState } from 'vuex';
+import { SET_STORE } from 'store/info';
+
 export default {
   data() {
     return {
@@ -57,10 +60,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions([SET_STORE]),
     appList() {
-      $.get(
-        '/tcloud/mainplat/users/usernow/apps/?_dc=1516596234945&page=1&start=0&limit=100'
-      ).done(data => (this.appDatas = data));
+      let _this = this;
+      $.get(restpath + '/apps').done(function(data) {
+        _this.appDatas = data;
+        _this.SET_STORE({ userApps: data });
+      });
     },
     opentapp(list) {
       debugger;
@@ -68,6 +74,7 @@ export default {
       if (list.scut === 'true') {
         window.open(list.scutopenurl);
       } else {
+        debugger;
         // 使用路由打开内部页
         this.$router.replace({ path: '' + list.appkey });
         //window.location.href='#/'+list.appkey;
